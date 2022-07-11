@@ -17,6 +17,10 @@
 Tendermint为了解决区块链的特殊需求，应运而生。
 
 # 二、概念
+
+https://learnblockchain.cn/docs/tendermint/introduction/what-is-tendermint.html  
+官网的是比较简单的介绍，可以先看看。
+
 ## 轮次 round
 共识区分为不同高度、不同轮次，每个高度的共识只能有唯一的决定（块），为了达成某一高度的共识，可能需要多次通信，用轮次来划分整个共识的通信过程。
 总结来说，每个高度必须成功共识，然后高度+1。一个高度的共识可能需要多轮才能完成，同一高度的轮次从0开始，如果某轮无法达成共识，那么进入下一轮（轮次+1）。
@@ -64,6 +68,11 @@ B、C、D都投出了blockX的preCommit。由于网络原因，B、C没有收到
 因此，对于B而言，如果收到了新的polka，那么需要替换其lockVal为blockY。
 但这个解锁显然不过，A完全可以不发送blockY的preVote给B，导致B无法形成blockY的polka。必须有更完善的机制。
 
+## 官方解释
+验证者一定为锁定到的区块预投票
+只有在之后轮次中出现针对那个区块的波尔卡，它才可以解锁并预通过新区块？=》死锁？
+
+
 ## overlord
 <div align=center><img src="./overlord.png"></div>
-为了防止失活的出现，增加了choke阶段，
+为了防止失活的出现，增加了choke阶段？？
